@@ -30,7 +30,7 @@ fasm yourforth.fas
 
 *rlwrap* is used to show previous commands while in *yourforth* (press `CursorUp`).
 
-Only one example program has so far been converted to Shavian: `bench.fs`, which contain the definition of the word  `𐑛𐑵-𐑐𐑮𐑲𐑥-𐑲𐑕𐑴`. To add the word to the *yourforth* dictionary:
+Only one example program has so far been converted to Shavian: `bench.fs`, which contains the definition of the word  `𐑛𐑵-𐑐𐑮𐑲𐑥-𐑲𐑕𐑴`. To add the word to the *yourforth* dictionary:
 ```
 𐑦𐑯𐑒𐑤𐑵𐑛 ./examples/bench.fs
 ```
