@@ -119,7 +119,7 @@ cw      =     4                 ; Cell width
 ; of space.
 ; (exercise)
 ;
-forthsize      =     0x100000   ; One megabyte, for starters.
+forthsize   =     0x100000   ; One megabyte, for starters.
 ;
 tasksize    = 0x10000           ; Total size of the uninitialised memory near EM
 stacksize   = tasksize/4        ;  Its subdivisions.
@@ -128,11 +128,11 @@ cibsize     = tasksize/2
 ; ---------------------- 2. Communicating with the world --------------------
 ; Forth is an interpreter, an environment that you can type commands into
 ; to get them executed.
-; Characters are glyph's, the bitmaps on the screen, that are associated
+; Characters are glyphs, the bitmaps on the screen, that are associated
 ; with the content of one byte.
 ; Forth doesn't care much what the console
 ; shows you, nor what content results from pressing a particular key.
-; Internally only rows of bytes are compared, and build up,
+; Internally only rows of bytes are compared, and built up,
 ; and they are passed to the console for display.
 ; The typing and the showing of results goes through
 ; a "console" which is typically a terminal window on a Linux X-screen, but
@@ -150,24 +150,24 @@ cibsize     = tasksize/2
 ; the open system call opens a file.
 ; Their documentation shows on commands like "man 2 exit".
 
-__NR_exit    =     0x1
-__NR_open    =     0x5
-__NR_close   =     0x6
-__NR_creat   =     0x8
-__NR_unlink  =     0xa
-__NR_chdir   =     0xc
-__NR_read    =     0x3
-__NR_select  =     0x52
-__NR_newselect      =     0x8e
-__NR_write   =     0x4
-__NR_ioctl   =     0x36
-__NR_ioperm  =     0x65
-__NR_iopl    =     0x6e
-__NR_lseek   =     0x13
-__NR_execve  =     0xb
-__NR_fork    =     0x2
-__NR_waitpid =     0x7
-__NR_pipe    =     0x2a
+__NR_exit       =     0x1
+__NR_open       =     0x5
+__NR_close      =     0x6
+__NR_creat      =     0x8
+__NR_unlink     =     0xa
+__NR_chdir      =     0xc
+__NR_read       =     0x3
+__NR_select     =     0x52
+__NR_newselect  =     0x8e
+__NR_write      =     0x4
+__NR_ioctl      =     0x36
+__NR_ioperm     =     0x65
+__NR_iopl       =     0x6e
+__NR_lseek      =     0x13
+__NR_execve     =     0xb
+__NR_fork       =     0x2
+__NR_waitpid    =     0x7
+__NR_pipe       =     0x2a
 
 ; See XOS of how the dispatching takes place. (ex. 2.2)
 ; The numbers have been copied from a secret place in Linux's include hierarchy (exercise)
@@ -215,7 +215,7 @@ bm:                     ; This is the first address of Forth.
 ; we can't put all 32 bit numbers there. There are other notations for
 ; expressions that are known at compile time and constant : "aap" 1234 0x1234.
 ; We'll call those denotations.
-; The solution for denotations, is that it sufficient to have a partial
+; The solution for denotations is that it sufficient to have a partial
 ; or ambiguous match. yourforth requires that the first characters are
 ; recognized, so it can handle a 0x1234 notation for hexadecimal but not
 ; Intel's 1234H.
@@ -1753,7 +1753,7 @@ QERR2:  dd      EXIT
         dd      _TYPE_
         dd      BRANCH
 sb1:
-        string    " : ISN'T UNIQUE"
+        string    " : 𐑦𐑟𐑩𐑯𐑑 𐑿𐑯𐑰𐑒"
         dd      LIT, sb1
         dd      string_fetch
         dd      _TYPE_, CR
@@ -1778,7 +1778,7 @@ CREA1:  dd      DROP
         dd      SWAP, to_LFA, _store_
         dd      _store_
         dd      EXIT
-    header  paren_CREATE,   docol, paren_CREATE+5*cw, 0, lastlink, "(𐑒𐑮𐑰𐑲𐑑)"
+    header  paren_CREATE,   docol, paren_CREATE+5*cw, 0, lastlink, "(𐑒𐑮𐑦𐑱𐑑)"
         dd      HEADER
         dd      CONTEXT, _fetch_
         dd      _LINK_
@@ -1836,7 +1836,7 @@ CREA1:  dd      DROP
         dd      _, _
         dd      LIT, __NR_close, XOS
         dd      EXIT
-    header  CREATE_FILE,   docol, CREATE_FILE+5*cw, 0, lastlink, "𐑒𐑮𐑰𐑱𐑑-𐑓𐑲𐑤"
+    header  CREATE_FILE,   docol, CREATE_FILE+5*cw, 0, lastlink, "𐑒𐑮𐑦𐑱𐑑-𐑓𐑲𐑤"
         dd      to_R, two_DUP, DELETE_FILE, DROP
         dd      ZEN, R_from, _
         dd      LIT, __NR_creat, XOS
@@ -1992,7 +1992,7 @@ SIGN1:  dd      EXIT
         dd      CELL_plus
         dd      EXIT
 
-    header  CREATE,   docol, CREATE+5*cw, 0, lastlink, "𐑒𐑮𐑰𐑱𐑑"
+    header  CREATE,   docol, CREATE+5*cw, 0, lastlink, "𐑒𐑮𐑦𐑱𐑑"
         dd      NAME
         dd      paren_CREATE
         dd      LIT, dodo, LATEST, to_CFA, _store_
@@ -2195,7 +2195,7 @@ startforthcode:
     db ": 𐑜𐑧𐑑-𐑓𐑲𐑤 2𐑛𐑿𐑐 $, 𐑛𐑮𐑪𐑐 1699506502 , 0 𐑴𐑐𐑧𐑯-𐑓𐑲𐑤 𐑔𐑮𐑴 >𐑮 𐑣𐑽    ", LF
     db "   𐑛𐑿𐑐 𐑧𐑥 6 / 𐑛𐑿𐑐 𐑨𐑤𐑪𐑑 1000 - 𐑮@ 𐑮𐑰𐑛-𐑓𐑲𐑤 𐑔𐑮𐑴 𐑮>             ", LF
     db "   𐑒𐑤𐑴𐑟-𐑓𐑲𐑤 𐑔𐑮𐑴 2𐑛𐑿𐑐 + 𐑛𐑐 ! ;                               ", LF
-    db ": 𐑐𐑩𐑑-𐑓𐑲𐑤 493 𐑒𐑮𐑰𐑱𐑑-𐑓𐑲𐑤 𐑔𐑮𐑴 𐑛𐑿𐑐 >𐑮 𐑮𐑲𐑑-𐑓𐑲𐑤 𐑔𐑮𐑴 𐑮>           ", LF
+    db ": 𐑐𐑩𐑑-𐑓𐑲𐑤 493 𐑒𐑮𐑦𐑱𐑑-𐑓𐑲𐑤 𐑔𐑮𐑴 𐑛𐑿𐑐 >𐑮 𐑮𐑲𐑑-𐑓𐑲𐑤 𐑔𐑮𐑴 𐑮>           ", LF
     db "    𐑒𐑤𐑴𐑟-𐑓𐑲𐑤 𐑔𐑮𐑴 ;                                          ", LF
     db ": 𐑦𐑯𐑒𐑤𐑵𐑛 𐑯𐑱𐑥 𐑣𐑽 >𐑮 '𐑜𐑧𐑑-𐑓𐑲𐑤 𐑒𐑨𐑗 𐑛𐑿𐑐 𐑦𐑓 𐑮> 𐑛𐑐 ! 𐑔𐑮𐑴          ", LF
     db "    𐑧𐑤𐑕 𐑮> 𐑛𐑮𐑪𐑐 𐑛𐑮𐑪𐑐 𐑞𐑧𐑯 𐑧𐑝𐑨𐑤𐑰𐑲𐑑 ;                          ", LF
@@ -2210,7 +2210,7 @@ startforthcode:
     db ":  .𐑕 𐑒𐑮 &S 𐑧𐑥𐑦𐑑 &[ 𐑧𐑥𐑦𐑑 𐑕𐑐𐑱𐑕                                 ", LF
     db "   𐑛𐑕𐑐@ 𐑛𐑕𐑐0 𐑚𐑦𐑜𐑦𐑯 2𐑛𐑿𐑐 < 𐑢𐑲𐑤 0 𐑕𐑧𐑤+ - 𐑛𐑿𐑐 @ . 𐑮𐑦𐑐𐑰𐑑          ", LF
     db "   𐑛𐑮𐑪𐑐 𐑛𐑮𐑪𐑐 &] 𐑧𐑥𐑦𐑑 ;                                        ", LF
-    db ": 𐑓𐑸𐑜𐑧𐑑  𐑐𐑪𐑕𐑑𐑐𐑴𐑯 ' 𐑛𐑿𐑐 >𐑯𐑓𐑱 @ 𐑛𐑐 !                            ", LF
+    db ": 𐑓𐑹𐑜𐑧𐑑  𐑐𐑪𐑕𐑑𐑐𐑴𐑯 ' 𐑛𐑿𐑐 >𐑯𐑓𐑱 @ 𐑛𐑐 !                            ", LF
     db "   >𐑤𐑓𐑱 @ '𐑓𐑹𐑔 >𐑚𐑪𐑛𐑦 >𐑤𐑓𐑱 ! ;                                 ", LF
     db ": 𐑑𐑭𐑕𐑒 ;                                                      ", LF
 endforthcode:
